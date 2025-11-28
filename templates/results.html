@@ -4,22 +4,16 @@
   <meta charset="utf-8">
   <title>Candidates (ranked)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <style>
-    body { background:#f7f7f9; }
-    .cand-card { margin-bottom: 1.25rem; }
+    .cand-card { margin-bottom: 1rem; }
     .cand-header { display:flex; align-items:center; justify-content:space-between; }
-    .cand-score { font-weight:700; font-size:1.1rem; }
-    .field-label { color:#666; font-size:0.9rem; margin-bottom:.15rem; }
-    .field-value { font-weight:500; margin-bottom:.6rem; }
-    .summary li { margin-bottom:.45rem; }
+    .cand-score { font-weight:700; font-size:1.05rem; }
+    .kgrid .col-12 { margin-bottom:.25rem; }
   </style>
 </head>
-<body>
+<body class="bg-light">
 <div class="container my-3">
-
   <div class="d-flex justify-content-between align-items-center mb-3">
     <a class="btn btn-outline-secondary btn-sm" href="/">Back</a>
     <a class="btn btn-primary btn-sm" href="/download_candidates">Download CSV</a>
@@ -29,64 +23,49 @@
     <div class="alert alert-secondary">No results to show.</div>
   {% endif %}
 
-  {% for r in rows %}
-    <div class="card cand-card">
-      <div class="card-body">
-
-        <!-- Name + score -->
-        <div class="cand-header mb-3">
-          <h5 class="mb-0">{{ r["Candidate's Name"]|fmt or "Unnamed" }}</h5>
-          <div class="cand-score">Score: {{ r["Score"] }}</div>
-        </div>
-
-        <!-- Two-column details -->
-        <div class="row">
-          <!-- LEFT -->
-          <div class="col-md-6">
-            <div class="field-label">E-mail</div>
-            <div class="field-value">{{ r["E-Mail ID"]|fmt }}</div>
-
-            <div class="field-label">Location</div>
-            <div class="field-value">{{ r["Location"]|fmt }}</div>
-
-            <div class="field-label">Education</div>
-            <div class="field-value">{{ r["Education"]|fmt }}</div>
+  <div class="row">
+    {% for r in rows %}
+    <div class="col-md-6">
+      <div class="card cand-card">
+        <div class="card-body">
+          <div class="cand-header mb-2">
+            <h5 class="mb-0">{{ r["Candidate's Name"] or "Unnamed" }}</h5>
+            <div class="cand-score">Score: {{ r["Score"] }}</div>
           </div>
 
-          <!-- RIGHT (now includes Skills) -->
-          <div class="col-md-6">
-            <div class="field-label">Phone</div>
-            <div class="field-value">{{ r["Phone No."]|fmt }}</div>
-
-            <div class="field-label">Experience (years)</div>
-            <div class="field-value">{{ r["Experience (yrs)"]|fmt }}</div>
-
-            <div class="field-label">Skills</div>
-            <div class="field-value">
-              {% if r["Skills"] is string %}
-                {{ r["Skills"] }}
-              {% else %}
-                {{ r["Skills"]|fmt }}
-              {% endif %}
+          <div class="row kgrid">
+            <div class="col-md-6 col-12">
+              <p class="mb-1"><strong>E-mail</strong><br>{{ r["E-Mail ID"] }}</p>
+              <p class="mb-1"><strong>Phone</strong><br>{{ r["Phone No."] }}</p>
+              <p class="mb-1"><strong>Location</strong><br>{{ r["Location"] }}</p>
+            </div>
+            <div class="col-md-6 col-12">
+              <p class="mb-1"><strong>Experience (years)</strong><br>{{ r["Experience (yrs)"] }}</p>
+              <p class="mb-1"><strong>Education</strong><br>{{ r["Education"] }}</p>
+              <p class="mb-1"><strong>Skills</strong><br>{{ r["Skills"] }}</p>
             </div>
           </div>
-        </div>
 
-        <!-- Summary bullets -->
-        {% if r.get("SummaryLines") and r["SummaryLines"]|length %}
-          <hr class="my-3">
-          <h6 class="mb-2">Summary</h6>
-          <ul class="summary mb-0">
+          {% if r.get("SummaryLines") and r["SummaryLines"]|length %}
+          <hr>
+          <p class="mb-1"><strong>Summary</strong></p>
+          <ul class="mb-0">
             {% for line in r["SummaryLines"] %}
-              <li>{{ line }}</li>
+              <li class="mb-1">{{ line }}</li>
             {% endfor %}
           </ul>
-        {% endif %}
+          {% endif %}
 
+          {% if r.get("CV Code") %}
+            <div class="mt-3">
+              <a class="btn btn-sm btn-outline-primary" href="/download/{{ r['CV Code'] }}">View CV</a>
+            </div>
+          {% endif %}
+        </div>
       </div>
     </div>
-  {% endfor %}
-
+    {% endfor %}
+  </div>
 </div>
 </body>
 </html>

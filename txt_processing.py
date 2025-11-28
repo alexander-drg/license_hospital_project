@@ -1,41 +1,15 @@
 import re
 import nltk
+nltk.download('stopwords', quiet=True)
 from nltk.corpus import stopwords
 
-# download once if missing (safe to keep)
-def _ensure_nltk():
-    pkgs = [
-        ("tokenizers/punkt", "punkt"),
-        ("corpora/stopwords", "stopwords"),
-        ("taggers/averaged_perceptron_tagger", "averaged_perceptron_tagger"),
-        ("corpora/wordnet", "wordnet"),
-        ("corpora/omw-1.4", "omw-1.4"),
-    ]
-    for res, name in pkgs:
-        try:
-            nltk.data.find(res)
-        except LookupError:
-            nltk.download(name)
-
-_ensure_nltk()
-
-def preprocess(txt):
-    """
-    Returns a preprocessed list of texts.
-    """
-    sw = set(stopwords.words("english"))
-    space_pattern = r"\s+"
-    special_letters = r"[^a-zA-Z#]"
+def preprocess(txt_list):
+    sw = set(stopwords.words('english'))
     p_txt = []
-
-    for resume in txt:
-        text = re.sub(space_pattern, " ", resume)            # remove extra spaces
-        text = re.sub(special_letters, " ", text)            # remove special chars
-        text = re.sub(r"[^\w\s]", "", text)                  # remove punctuation
-        text = text.split()
-        text = [w for w in text if w.isalpha()]              # keep alphabetic
-        text = [w for w in text if w.lower() not in sw]      # remove stopwords
-        text = [w.lower() for w in text]                     # lowercase
-        p_txt.append(" ".join(text))
-
+    for resume in txt_list:
+        t = re.sub(r'\s+', ' ', resume or ' ')
+        t = re.sub(r'[^a-zA-Z# ]', ' ', t)
+        t = re.sub(r'[^\w\s]', ' ', t)
+        toks = [w.lower() for w in t.split() if w.isalpha() and w.lower() not in sw]
+        p_txt.append(" ".join(toks))
     return p_txt
