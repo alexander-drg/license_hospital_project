@@ -64,6 +64,14 @@ Concise bullet Summary
 
 View CV button per candidate
 
+Download CSV if needed.
+
+## Screenshots
+
+<img width="1900" height="1053" alt="image" src="https://github.com/user-attachments/assets/f56a0db3-f12d-44ce-af99-afb0fe67f58b" />
+
+##### Extracted informations
+<img width="1897" height="1013" alt="image" src="https://github.com/user-attachments/assets/a555af81-eb9a-439d-a4f2-297a137f93d7" />
 # Project Structure
 
 
@@ -89,16 +97,3 @@ View CV button per candidate
 ├─ txt_to_features.py
 ├─ model.py
 └─ summarizer.py
-
-
-
-Download CSV if needed.
-## Screenshots
-
-<img width="1900" height="1053" alt="image" src="https://github.com/user-attachments/assets/f56a0db3-f12d-44ce-af99-afb0fe67f58b" />
-
-##### Extracted informations
-<img width="1897" height="1013" alt="image" src="https://github.com/user-attachments/assets/a555af81-eb9a-439d-a4f2-297a137f93d7" />
-
-
-
