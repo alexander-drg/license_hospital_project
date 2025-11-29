@@ -65,32 +65,31 @@ Concise bullet Summary
 View CV button per candidate
 
 # Project Structure
-Project Structure
-=================
+
+
+
+```text
 .
 ├─ app.py
 ├─ requirements.txt
-│
 ├─ Data/
 │  └─ skill_red.csv
-│
 ├─ files/
-│  ├─ resumes/           # local uploads
-│  └─ outputs/           # generated data
+│  ├─ resumes/
+│  └─ outputs/
 │     ├─ Candidates.csv
 │     ├─ latest_shortlist.json
 │     └─ latest_jd.json
-│
 ├─ templates/
 │  ├─ index.html
 │  └─ results.html
-│
 ├─ extract_txt.py
 ├─ extract_entities.py
 ├─ txt_processing.py
 ├─ txt_to_features.py
 ├─ model.py
 └─ summarizer.py
+
 
 
 Download CSV if needed.
