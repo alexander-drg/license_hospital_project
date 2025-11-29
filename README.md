@@ -1,5 +1,5 @@
 
-CV Parser & Shortlister (Healthcare)
+### CV Parser & Shortlister (Healthcare)
 
 Flask app that ingests CVs (PDF/DOCX), extracts key signals (contact, skills, education, experience, location), and ranks candidates against a job description on a 1–100 scale. The UI shows ranked candidate cards with a concise bullet summary and supports CSV export.
 ## Features
@@ -46,7 +46,7 @@ macOS / Linux
 FLASK_APP=app.py python -m flask run
 
 
- ## Open http://127.0.0.1:5000/
+ ## Open http://127.0.0.1:8080/
 
  ## How to Use
 
