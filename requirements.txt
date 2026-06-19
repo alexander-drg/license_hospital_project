@@ -1,0 +1,12 @@
+flask
+sqlalchemy
+pandas
+scikit-learn
+sentence-transformers
+faiss-cpu
+numpy
+scipy
+transformers
+torch
+pymysql
+requests>=2.31.0

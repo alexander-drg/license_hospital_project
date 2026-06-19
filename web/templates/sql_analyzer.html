@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="animate-in">
+  <h1 class="page-title">SQL Database Analyzer</h1>
+  <p class="page-subtitle">Select SQL tables and generate an AI-assisted analysis</p>
+</div>
+
+{% if error %}
+<div class="card" style="border-color:#cc4444; color:#9b1c1c; margin-bottom:16px;">
+  <strong>Error:</strong> {{ error }}
+</div>
+{% endif %}
+
+<div class="card animate-in" style="margin-bottom:18px;">
+  <h2 style="margin-bottom:6px;">Custom Table Analysis</h2>
+  <p style="font-size:13px; color:var(--ink-muted); margin-bottom:14px;">
+    Select one or more SQL tables to preview and analyze with AI.
+  </p>
+
+  <form action="/sql-analyzer/analyze-tables" method="post" style="display:flex; flex-direction:column; gap:14px;">
+
+    <div>
+      <label style="font-weight:600;">Tables</label>
+      <div>
+  <label style="font-weight:600;">Search tables</label>
+  <input 
+    type="text" 
+    id="tableSearch" 
+    placeholder="Search table name..."
+    onkeyup="filterTables()"
+    style="width:100%; padding:10px; border-radius:10px; border:1px solid var(--border); margin-bottom:12px;"
+  >
+
+<div style="display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap;">
+  <button type="button" class="btn btn-ghost" onclick="selectVisibleTables()">
+    Select all
+  </button>
+
+  <button type="button" class="btn btn-ghost" onclick="clearTables()">
+    Clear all
+  </button>
+
+  <button type="button" class="btn btn-ghost" onclick="showOnlySelected()">
+    Show selected only
+  </button>
+
+  <button type="button" class="btn btn-ghost" onclick="showAllTables()">
+    Show all tables
+  </button>
+</div>
+
+  <div id="tablesList" style="max-height:320px; overflow-y:auto; border:1px solid var(--border); border-radius:12px; padding:10px;">
+    {% for table in tables %}
+      <label class="table-option" style="display:flex; align-items:center; gap:8px; padding:6px 4px; cursor:pointer;">
+        <input type="checkbox" name="tables" value="{{ table }}">
+        <span>{{ table }}</span>
+      </label>
+    {% endfor %}
+  </div>
+</div>
+      <div style="font-size:12px; color:var(--ink-muted); margin-top:6px;">
+        Hold Ctrl to select multiple tables.
+      </div>
+    </div>
+
+    <div>
+      <label style="font-weight:600;">Rows per table</label>
+      <input type="number" name="limit_per_table" value="3" min="1" max="10"
+             style="width:140px; padding:10px; border-radius:10px; border:1px solid var(--border);">
+    </div>
+
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <button type="submit" class="btn btn-primary">Analyze Selected Tables</button>
+      <a href="{{ url_for('main.home') }}" class="btn btn-ghost">Back</a>
+    </div>
+  </form>
+</div>
+
+{% if table_result %}
+<div class="card animate-in" style="margin-top:14px;">
+  <h3>Selected Tables AI Analysis</h3>
+  <p style="white-space:pre-line;">{{ table_result.ai_result }}</p>
+</div>
+
+<div class="card animate-in" style="margin-top:14px;">
+  <h3>Extracted Table Data</h3>
+  <pre style="white-space:pre-wrap; font-size:12px;">{{ table_result.profile_text }}</pre>
+</div>
+{% endif %}
+<script>
+function filterTables() {
+  const input = document.getElementById("tableSearch").value.toLowerCase();
+  const options = document.querySelectorAll(".table-option");
+
+  options.forEach(option => {
+    const text = option.innerText.toLowerCase();
+    option.style.display = text.includes(input) ? "flex" : "none";
+  });
+}
+
+function selectVisibleTables() {
+  const options = document.querySelectorAll(".table-option");
+
+  options.forEach(option => {
+    if (option.style.display !== "none") {
+      option.querySelector("input").checked = true;
+    }
+  });
+}
+
+function clearTables() {
+  document.querySelectorAll(".table-option input").forEach(input => {
+    input.checked = false;
+  });
+}
+
+function showOnlySelected() {
+  const options = document.querySelectorAll(".table-option");
+
+  options.forEach(option => {
+    const checked = option.querySelector("input").checked;
+    option.style.display = checked ? "flex" : "none";
+  });
+}
+
+function showAllTables() {
+  const options = document.querySelectorAll(".table-option");
+
+  options.forEach(option => {
+    option.style.display = "flex";
+  });
+}
+</script>
+{% endblock %}

@@ -1,0 +1,129 @@
+{
+  "overall_summary": "Executive Summary for Recruitment Dashboard:\n\nBased on our evaluation, we have identified Ion Namol as the strongest candidate for the Medic de familie – Clinică urbană position. His specialization in Radiology aligns well with the job requirements. Unfortunately, his rating falls under the Weak Match category due to limited compatibility. We also found two other candidates, Mihai Prepeleac, who share similar ratings and specializations as Ion Namol but in different professions (Healthcare Administration). This indicates that while they may not be a perfect fit for this role, they could still be suitable for other positions within the organization. Further evaluation is required to determine their suitability for specific job openings.",
+  "job_results": [
+    {
+      "job": {
+        "id": "j_d0016e06",
+        "title": "Healthcare Administration Coordinator – Imaging Centre",
+        "specialization": "",
+        "seniority": "",
+        "must_have_skills": "patient records management, electronic healthcare systems, communication with clinicians, organizational skills, computer skills",
+        "nice_to_have_skills": "referral tracking, medical reports, appointment booking platforms",
+        "city": "Iași, Romania",
+        "salary_min": "",
+        "salary_max": "",
+        "contract_type": "",
+        "shift": "Monday–Friday",
+        "description_text": "Title: Healthcare Administration Coordinator – Imaging Centre\r\n\r\nLocation: Iași, Romania\r\nType: Full-time\r\nSchedule: Monday–Friday\r\n\r\nWe are looking for a Healthcare Administration Coordinator to support the daily operations of a private imaging and medical diagnostics centre. The role focuses on patient scheduling, medical records management, administrative workflow coordination, communication with clinicians, and support for patient-facing services.\r\n\r\nResponsibilities:\r\n- Manage patient appointments and coordinate daily clinic schedules.\r\n- Maintain and update patient records in electronic healthcare systems.\r\n- Support radiologists, clinicians, and administrative staff with documentation and follow-up tasks.\r\n- Coordinate patient communication, including appointment confirmations, service information, and administrative requests.\r\n- Organize medical documentation, referrals, reports, and internal correspondence.\r\n- Ensure confidentiality and accuracy when handling patient data.\r\n- Assist with improving clinic workflow, appointment efficiency, and administrative processes.\r\n- Support new staff with internal systems and administrative procedures.\r\n\r\nRequirements:\r\n- Previous experience in healthcare administration, medical secretary work, clinic administration, or hospital administration.\r\n- Good understanding of patient records, appointment systems, and healthcare workflows.\r\n- Strong organizational and communication skills.\r\n- Experience working with doctors, consultants, patients, or medical support teams.\r\n- Ability to manage multiple administrative tasks in a clinical environment.\r\n- Good computer skills and experience with electronic records or patient management systems.\r\n- English language knowledge is considered an advantage.\r\n\r\nNice to have:\r\n- Experience in an imaging centre, radiology clinic, hospital department, or private medical clinic.\r\n- Experience with referral tracking, medical reports, patient databases, or appointment booking platforms.\r\n\r\nThis position is suitable for a candidate with strong healthcare administration experience, clinic workflow coordination skills, and previous exposure to patient-facing medical environments.",
+        "summary": "We seek a Healthcare Administration Coordinator to manage patient appointments, maintain electronic records, and support daily clinic operations. Strong organizational skills, experience in healthcare administration, and proficiency in electronic systems are essential.",
+        "source_filename": "Pasted job description #1"
+      },
+      "matches": [
+        {
+          "candidate_id": "c_349fafb8",
+          "candidate_name": "Mihai Prepeleac",
+          "candidate_specialization": "Healthcare Administration",
+          "candidate_years_exp": "12",
+          "job_id": "j_d0016e06",
+          "job_title": "Healthcare Administration Coordinator – Imaging Centre",
+          "job_specialization": "",
+          "score": 0.305,
+          "rating": 2,
+          "rating_label": "Weak Match",
+          "rating_description": "Limited compatibility",
+          "short_reason": "The system evaluated semantic alignment, skill overlap, experience relevance, competency fit, and bilingual Romanian-English terminology normalization."
+        },
+        {
+          "candidate_id": "c_fd49dca8",
+          "candidate_name": "Ion Namol",
+          "candidate_specialization": "Radiology",
+          "candidate_years_exp": "12",
+          "job_id": "j_d0016e06",
+          "job_title": "Healthcare Administration Coordinator – Imaging Centre",
+          "job_specialization": "",
+          "score": 0.258,
+          "rating": 2,
+          "rating_label": "Weak Match",
+          "rating_description": "Limited compatibility",
+          "short_reason": "The system evaluated semantic alignment, skill overlap, experience relevance, competency fit, and bilingual Romanian-English terminology normalization."
+        },
+        {
+          "candidate_id": "c_08fb890e",
+          "candidate_name": "Andrei Popescu Sales",
+          "candidate_specialization": "Radiology",
+          "candidate_years_exp": "11",
+          "job_id": "j_d0016e06",
+          "job_title": "Healthcare Administration Coordinator – Imaging Centre",
+          "job_specialization": "",
+          "score": 0.213,
+          "rating": 1,
+          "rating_label": "Very Weak Match",
+          "rating_description": "Low compatibility",
+          "short_reason": "The system evaluated semantic alignment, skill overlap, experience relevance, competency fit, and bilingual Romanian-English terminology normalization."
+        }
+      ]
+    },
+    {
+      "job": {
+        "id": "j_29938452",
+        "title": "Titlu: Medic de familie – Clinică urbană",
+        "specialization": "",
+        "seniority": "",
+        "must_have_skills": "excel, primary care, emr",
+        "nice_to_have_skills": "",
+        "city": "Cluj",
+        "salary_min": "",
+        "salary_max": "",
+        "contract_type": "",
+        "shift": "",
+        "description_text": "Titlu: Medic de familie – Clinică urbană\r\nLocație: Cluj-Napoca\r\nTip: Normă întreagă\r\nProgram: 09:00–17:00\r\n\r\nResponsabilități:  \r\n• Consultații de medicină de familie pentru adulți și copii\r\n• Administrarea vaccinărilor conform programelor naționale și opționale\r\n• Screening și monitorizare pentru boli cronice\r\n• Triajul cazurilor acute și îndrumarea către specialiști\r\n• Educație medicală pentru pacienți\r\n• Evidență și raportare în SIUI/EMR\r\n• Colaborare interdisciplinară cu echipa clinicii\r\n\r\nCerințe obligatorii:  \r\n• Specializare finalizată în Medicină de Familie / Medicină Generală\r\n• Competențe în primary care, vaccinare și diagnostic clinic de bază\r\n• Abilități excelente de comunicare și relaționare\r\n• Drept de liberă practică valabil\r\n\r\nApreciați:  \r\n• Experiență în telemedicină\r\n• Cunoașterea protocoalelor de prevenție\r\n• Familiaritate cu sisteme EMR moderne\r\n\r\nPachet salarial și beneficii:  \r\n• Salariu brut: 14.000–18.000 lei/lună, în funcție de experiență\r\n• Bonusuri de performanță și pentru număr de pacienți înscriși\r\n• Asigurare de malpraxis acoperită integral\r\n• Buget anual pentru cursuri și educație medicală continuă\r\n• Suport administrativ dedicat\r\n• Cabinete moderne, complet echipate\r\n• Posibilitatea de a desfășura activitate și în regim de telemedicină",
+        "summary": "Titlu: Medic de familie – Clinică urbană\r\nLocație: Cluj-Napoca\r\nTip: Normă întreagă\r\nProgram: 09:00–17:00\r\n\r\nResponsabilități:  \r\n• Consultații de medicină de familie pentru adulți și copii\r\n• Administrarea vaccinărilor conform programelor naționale și opționale\r\n• Screening și monitorizare pentru b",
+        "source_filename": "Pasted job description #1"
+      },
+      "matches": [
+        {
+          "candidate_id": "c_fd49dca8",
+          "candidate_name": "Ion Namol",
+          "candidate_specialization": "Radiology",
+          "candidate_years_exp": "12",
+          "job_id": "j_29938452",
+          "job_title": "Titlu: Medic de familie – Clinică urbană",
+          "job_specialization": "",
+          "score": 0.327,
+          "rating": 2,
+          "rating_label": "Weak Match",
+          "rating_description": "Limited compatibility",
+          "short_reason": "The system evaluated semantic alignment, skill overlap, experience relevance, competency fit, and bilingual Romanian-English terminology normalization."
+        },
+        {
+          "candidate_id": "c_349fafb8",
+          "candidate_name": "Mihai Prepeleac",
+          "candidate_specialization": "Healthcare Administration",
+          "candidate_years_exp": "12",
+          "job_id": "j_29938452",
+          "job_title": "Titlu: Medic de familie – Clinică urbană",
+          "job_specialization": "",
+          "score": 0.264,
+          "rating": 2,
+          "rating_label": "Weak Match",
+          "rating_description": "Limited compatibility",
+          "short_reason": "The system evaluated semantic alignment, skill overlap, experience relevance, competency fit, and bilingual Romanian-English terminology normalization."
+        },
+        {
+          "candidate_id": "c_08fb890e",
+          "candidate_name": "Andrei Popescu Sales",
+          "candidate_specialization": "Radiology",
+          "candidate_years_exp": "11",
+          "job_id": "j_29938452",
+          "job_title": "Titlu: Medic de familie – Clinică urbană",
+          "job_specialization": "",
+          "score": 0.236,
+          "rating": 1,
+          "rating_label": "Very Weak Match",
+          "rating_description": "Low compatibility",
+          "short_reason": "The system evaluated semantic alignment, skill overlap, experience relevance, competency fit, and bilingual Romanian-English terminology normalization."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card animate-in">
+  <h2 style="font-family:'DM Serif Display', serif; font-size:28px; margin-bottom:10px;">{{ job.title }}</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:14px; margin-top:18px;">
+    <div>
+      <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase;">Specialization</div>
+      <div>{{ job.specialization or "—" }}</div>
+    </div>
+    <div>
+      <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase;">City</div>
+      <div>{{ job.city or "—" }}</div>
+    </div>
+    <div>
+      <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase;">Seniority</div>
+      <div>{{ job.seniority or "—" }}</div>
+    </div>
+    <div>
+      <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase;">Contract</div>
+      <div>{{ job.contract_type or "—" }}</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div style="margin-bottom:16px;">
+    <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase; margin-bottom:6px;">Summary</div>
+    <p style="line-height:1.7;">{{ job.summary or "No summary generated." }}</p>
+  </div>
+
+  <div style="margin-bottom:16px;">
+    <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase; margin-bottom:6px;">Must-have skills</div>
+    <div>{{ job.must_have_skills or "—" }}</div>
+  </div>
+
+  <div style="margin-bottom:16px;">
+    <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase; margin-bottom:6px;">Source file</div>
+    <div>{{ job.source_filename or "—" }}</div>
+  </div>
+
+  <div style="margin-bottom:16px;">
+    <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase; margin-bottom:6px;">Raw description</div>
+    <div style="white-space:pre-line; line-height:1.7;">{{ job.description_text or "—" }}</div>
+  </div>
+
+  <a href="/" class="btn btn-ghost">Back</a>
+</div>
+
+{% endblock %}

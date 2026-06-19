@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="animate-in">
+  <h1 class="page-title">Candidates</h1>
+  <p class="page-subtitle">
+    {{ candidates|length }} candidate{{ 's' if candidates|length != 1 else '' }} ·
+    {{ jobs|length }} job{{ 's' if jobs|length != 1 else '' }}
+    {% if ollama_online %}
+      · AI online
+    {% else %}
+      · AI offline
+    {% endif %}
+  </p>
+</div>
+
+<div style="display:flex; flex-direction:column; gap:14px;">
+
+  <div class="card animate-in" style="animation-delay:.05s; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+    <div style="flex:1; min-width:220px;">
+      <div style="font-weight:600; font-size:14px; margin-bottom:2px;">Upload CVs</div>
+      <div style="font-size:12px; color:var(--ink-muted);">Upload one or multiple CV files</div>
+    </div>
+
+    <form action="/upload-cvs" method="post" enctype="multipart/form-data"
+          style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+      <label style="
+          display:inline-flex; align-items:center; gap:8px;
+          padding: 8px 14px; border-radius:9px;
+          border: 1px dashed var(--border); background: var(--bg);
+          font-size:13px; color:var(--ink-muted); cursor:pointer;">
+        <span id="cv-file-label">Choose CVs</span>
+        <input type="file" name="cvs" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg,.txt" multiple required
+               style="display:none"
+               onchange="document.getElementById('cv-file-label').textContent = this.files.length ? `${this.files.length} file(s) selected` : 'Choose CVs'">
+      </label>
+      <button type="submit" class="btn btn-primary">Upload CVs</button>
+    </form>
+  </div>
+
+  <div class="card animate-in" style="animation-delay:.08s;">
+    <div style="font-weight:600; font-size:14px; margin-bottom:2px;">Upload Job Descriptions</div>
+    <div style="font-size:12px; color:var(--ink-muted); margin-bottom:14px;">
+      Upload multiple files or paste multiple jobs below. Separate pasted jobs using <strong>---</strong> on its own line.
+    </div>
+
+    <form action="/upload-jobs" method="post" enctype="multipart/form-data" style="display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+        <label style="
+            display:inline-flex; align-items:center; gap:8px;
+            padding: 8px 14px; border-radius:9px;
+            border: 1px dashed var(--border); background: var(--bg);
+            font-size:13px; color:var(--ink-muted); cursor:pointer;">
+          <span id="job-file-label">Choose job files</span>
+          <input type="file" name="jobs" accept=".pdf,.doc,.docx,.txt" multiple
+                 style="display:none"
+                 onchange="document.getElementById('job-file-label').textContent = this.files.length ? `${this.files.length} file(s) selected` : 'Choose job files'">
+        </label>
+      </div>
+
+      <textarea name="job_texts" rows="10"
+                placeholder="Paste one or more job descriptions here. Use a line with --- between jobs."
+                style="width:100%; border:1px solid var(--border); border-radius:12px; padding:14px; font:inherit; resize:vertical; background:var(--surface);"></textarea>
+
+      <div>
+        <button type="submit" class="btn btn-primary">Upload Job(s)</button>
+      </div>
+    </form>
+  </div>
+
+  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+  <a href="/results" class="btn btn-primary">Run AI Analysis</a>
+  <a href="/results/saved" class="btn btn-ghost">View Last Results</a>
+  <a href="/sql-analyzer" class="btn btn-ghost">SQL Analyzer</a>
+  
+
+  <form action="/reset" method="post" style="display:inline;">
+    <button type="submit" class="btn btn-ghost">Reset All</button>
+  </form>
+</div>
+
+  {% if candidates %}
+  <div style="margin-top:8px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+  <div class="section-header" style="margin-bottom:0;">Uploaded Candidates</div>
+  <form action="/reset-cvs" method="post" style="display:inline;">
+    <button type="submit" class="btn btn-ghost">Reset CVs</button>
+  </form>
+</div>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      {% for c in candidates %}
+      <a href="/candidate/{{ c.id }}" style="text-decoration:none; color:inherit;">
+        <div class="card candidate-row">
+          <div class="candidate-avatar">
+            {{ (c.name or '?')[0] | upper }}
+          </div>
+          <div style="flex:1; min-width:0;">
+            <div style="font-weight:600; font-size:15px; margin-bottom:3px;">{{ c.name or 'Unknown' }}</div>
+            <div style="font-size:13px; color:var(--ink-muted); display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+              <span class="badge badge-green">{{ c.specialization or '—' }}</span>
+              <span>{{ c.years_exp or '0' }}y experience</span>
+              {% if c.source_filename %}
+                <span>{{ c.source_filename }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if jobs %}
+  <div style="margin-top:8px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+  <div class="section-header" style="margin-bottom:0;">Uploaded Jobs</div>
+  <form action="/reset-jobs" method="post" style="display:inline;">
+    <button type="submit" class="btn btn-ghost">Reset Jobs</button>
+  </form>
+</div>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      {% for j in jobs %}
+      <div class="card" style="display:flex; justify-content:space-between; align-items:center; gap:16px;">
+        <div>
+          <div style="font-weight:600; font-size:15px; margin-bottom:3px;">
+            <a href="/job/{{ j.id }}" style="text-decoration:none; color:inherit;">{{ j.title or 'Untitled Job' }}</a>
+          </div>
+          <div style="font-size:13px; color:var(--ink-muted); display:flex; gap:8px; flex-wrap:wrap;">
+            <span class="badge badge-green">{{ j.specialization or '—' }}</span>
+            <span>{{ j.city or '—' }}</span>
+            {% if j.source_filename %}
+              <span>{{ j.source_filename }}</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+
+<style>
+.candidate-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: box-shadow .15s, border-color .15s;
+}
+.candidate-row:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(26,92,58,.1);
+}
+.candidate-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--accent-lt);
+  color: var(--accent);
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
+
+{% endblock %}

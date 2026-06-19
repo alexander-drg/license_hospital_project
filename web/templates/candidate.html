@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card animate-in">
+  <h2 style="font-family:'DM Serif Display', serif; font-size:28px; margin-bottom:10px;">{{ candidate.name }}</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:14px; margin-top:18px;">
+    <div>
+      <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.5px;">Specialization</div>
+      <div>{{ candidate.specialization or "—" }}</div>
+    </div>
+    <div>
+      <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.5px;">Experience</div>
+      <div>{{ candidate.years_exp or "0" }} years</div>
+    </div>
+    <div>
+      <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.5px;">City</div>
+      <div>{{ candidate.city or "—" }}</div>
+    </div>
+    <div>
+      <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.5px;">Email</div>
+      <div>{{ candidate.email or "—" }}</div>
+    </div>
+    <div>
+      <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.5px;">Phone</div>
+      <div>{{ candidate.phone or "—" }}</div>
+    </div>
+    <div>
+      <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.5px;">Education</div>
+      <div>{{ candidate.education or "—" }}</div>
+    </div>
+    <div>
+      <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.5px;">Source file</div>
+      <div>{{ candidate.source_filename or "—" }}</div>
+    </div>
+
+    
+  </div>
+
+  <hr>
+
+  <div>
+    <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px;">Skills</div>
+    <div>{{ candidate.skills or "—" }}</div>
+  </div>
+
+  <div style="margin-top:18px;">
+    <div style="font-size:12px; color:var(--ink-muted); text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px;">Summary</div>
+    <p style="line-height:1.7;">{{ candidate.summary or "No summary generated." }}</p>
+  </div>
+</div>
+
+{% if recs %}
+  <h3 class="section-header">Recommendations</h3>
+  {% for r in recs %}
+    <div class="card">
+      <strong>{{ r.title }}</strong> — score {{ r.score }}
+      <div style="font-size:12px; color:var(--ink-muted); margin-top:6px;">
+        emb {{ r.reasons.emb }} ·
+        skills {{ r.reasons.skills }} ·
+        salary {{ r.reasons.salary }} ·
+        geo {{ r.reasons.geo }} ·
+        sched {{ r.reasons.schedule }} ·
+        comp {{ r.reasons.comp }} ·
+        ce {{ r.reasons.ce }}
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <div class="card" style="color:var(--ink-muted);">
+    No jobs loaded yet. CV upload and AI parsing work, but recommendations are unavailable until job data is added.
+  </div>
+{% endif %}
+<div style="margin-top:18px;">
+  <a href="{{ url_for('main.home') }}" class="btn btn-ghost">Back</a>
+</div>
+{% endblock %}
