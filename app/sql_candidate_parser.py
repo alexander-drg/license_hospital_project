@@ -8,8 +8,8 @@ DB_CONFIG = {
     "host": "127.0.0.1",
     "port": 3306,
     "user": "root",
-    "password": "NewPassword123!",
-    "database": "dump_test",
+    "password": "NewPassword321!#$", # mock password, use your actual SQL database here
+    "database": "dump_test", 
     "cursorclass": pymysql.cursors.DictCursor,
 }
 
