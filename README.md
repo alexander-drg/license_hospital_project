@@ -19,6 +19,7 @@ AI Analysis Results
 SQL Database Analyser (selected 5 relevant tables out of all of them)
 <img width="884" height="692" alt="image" src="https://github.com/user-attachments/assets/dc88edf8-4304-45d7-b150-392769e9e0db" />
 <img width="872" height="604" alt="image" src="https://github.com/user-attachments/assets/cddb4ba1-99d7-4606-b9f9-299604da5a20" />
+
 (can also display the data from the tables themselves)
 
 Features
