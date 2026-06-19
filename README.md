@@ -1,6 +1,6 @@
-# Intelligent Matching Algorithms for Candidate--Job Compatibility Analysis Using NLP
+# Intelligent Matching Algorithms for Candidate-Job Compatibility Analysis Using NLP
 
-> Bachelor's Thesis Project -- Politehnica Bucharest, 2026
+> Bachelor's Thesis Project, Politehnica Bucharest, 2026
 > Alexandru Draghici
 
 A hybrid AI-powered recruitment platform that matches candidate CVs to job descriptions using a combination of deterministic feature scoring and semantic analysis via a locally hosted Large Language Model (Ollama).
@@ -9,7 +9,7 @@ A hybrid AI-powered recruitment platform that matches candidate CVs to job descr
 
 ## Screenshots
 
-### Homepage -- Upload Interface
+### Homepage,Upload Interface
 <img width="1084" height="540" alt="image" src="https://github.com/user-attachments/assets/f38d2926-f6e3-4831-8adf-e6a05ae6f66d" />
 
 ### Ranked Results with Component Score Breakdown
@@ -32,12 +32,12 @@ A hybrid AI-powered recruitment platform that matches candidate CVs to job descr
 
 ## Features
 
-- **Multi-format CV parsing** -- PDF, DOCX, TXT, and image-based documents (OCR fallback via Tesseract)
-- **Hybrid matching algorithm** -- combines skill overlap (Jaccard), experience alignment, location compatibility, and semantic cosine similarity
-- **Local LLM integration** -- all AI inference via Ollama, no data sent to external APIs
-- **SQL Database Analyser** -- connects to a MySQL recruitment database, extracts schema, detects relationships, and generates AI-assisted plain-language interpretations
-- **Configurable scoring weights** -- adjust the importance of each matching dimension per role type
-- **Flask web interface** -- fully browser-based, no command-line required for normal use
+- **Multi-format CV parsing** : PDF, DOCX, TXT, and image-based documents (OCR fallback via Tesseract)
+- **Hybrid matching algorithm** : combines skill overlap (Jaccard), experience alignment, location compatibility, and semantic cosine similarity
+- **Local LLM integration** : all AI inference via Ollama, no data sent to external APIs
+- **SQL Database Analyser** : connects to a MySQL recruitment database, extracts schema, detects relationships, and generates AI-assisted plain-language interpretations
+- **Configurable scoring weights** : adjust the importance of each matching dimension per role type
+- **Flask web interface** : fully browser-based, no command-line required for normal use
 
 ---
 
@@ -50,10 +50,10 @@ M = w1*S + w2*E + w3*L + w4*C
 ```
 
 Where:
-- **S** -- Skill similarity (Jaccard coefficient + competency weighting)
-- **E** -- Experience alignment (duration + topical relevance)
-- **L** -- Location compatibility (3-tier geographic matching)
-- **C** -- Semantic cosine similarity (Ollama LLM embeddings)
+- **S** : Skill similarity (Jaccard coefficient + competency weighting)
+- **E** : Experience alignment (duration + topical relevance)
+- **L** : Location compatibility (3-tier geographic matching)
+- **C** : Semantic cosine similarity (Ollama LLM embeddings)
 
 Default weights: `w1=0.40, w2=0.30, w3=0.10, w4=0.20`
 
